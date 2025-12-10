@@ -3,15 +3,11 @@ import { defineConfig } from "wxt";
 // See https://wxt.dev/api/config.html
 export default defineConfig({
   srcDir: "src",
-  modules: ["@wxt-dev/module-svelte"],
-  webExt: {
-    startUrls: ["chrome://extensions"],
-  },
-  // Ensure generated manifest includes permissions needed by the extension
-  manifest: {
+  modules: ["@wxt-dev/module-svelte", "@wxt-dev/auto-icons"],
+  manifest: ({ browser }) => ({
     name: "Find in Anki",
     permissions: ["contextMenus", "storage", "activeTab"],
-    host_permissions: ["http://localhost:8765/*", "http://127.0.0.1:8765/*"],
+    host_permissions: ["<all_urls>"],
     commands: {
       "find-in-anki": {
         suggested_key: {
@@ -24,5 +20,13 @@ export default defineConfig({
       page: "options/index.html",
       open_in_tab: true,
     },
-  },
+    ...(browser === "firefox" && {
+      browser_specific_settings: {
+        gecko: {
+          id: "find-in-anki@example.com",
+          strict_min_version: "48.0",
+        },
+      },
+    }),
+  }),
 });
