@@ -6,7 +6,7 @@ export default defineConfig({
   srcDir: "src",
   modules: ["@wxt-dev/module-svelte", "@wxt-dev/auto-icons"],
   manifest: ({ browser }) => {
-    let manifest: UserManifest = {
+    let manifest: any = {
       name: "Find in Anki",
       host_permissions: ["<all_urls>"],
       options_ui: {
@@ -48,8 +48,12 @@ export default defineConfig({
         },
         browser_specific_settings: {
           gecko: {
-            id: "find-in-anki@example.com",
-            strict_min_version: "48.0",
+            id: "{fa7fa832-105b-52ea-8160-cfc319b78e44}",
+            strict_min_version: "58.0",
+            data_collection_permissions: {
+              required: ["browsingActivity"],
+              optional: ["technicalAndInteraction"],
+            },
           },
         },
       };

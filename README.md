@@ -69,22 +69,22 @@ Access extension options:
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone git@github.com:mootah/find-in-anki.git
 cd find-in-anki
 
 # Install dependencies
-npm install
+bun install
 
 # Start development server (watches files and reloads extension)
-npm run dev
+bun run dev
 
 # Build for production
-npm run build  # Chrome
-npm run build:firefox  # Firefox
+bun run build  # Chrome
+bun run build:firefox  # Firefox
 
 # Zip for distribution
-npm run zip  # Chrome
-npm run zip:firefox  # Firefox
+bun run zip  # Chrome
+bun run zip:firefox  # Firefox
 ```
 
 ### Recommended IDE Setup
@@ -96,6 +96,9 @@ npm run zip:firefox  # Firefox
 - `src/entrypoints/`: Main extension entry points (background, content, popup, options)
 - `src/services/`: AnkiConnect integration service
 - `src/types/`: TypeScript type definitions
+- `src/lib/`: TypeScript type definitions
+- `src/lib/`: Reusable Svelte components
+- `src/assets/`: Static assets (logos, images)
 - `public/`: Static assets (icons, manifest shared data)
 
 ### Technologies Used
@@ -117,7 +120,7 @@ If you encounter any issues:
 
 1. Check that Anki and AnkiConnect are properly configured
 2. Verify your browser extension is up to date
-3. Search existing [GitHub issues](https://github.com/username/find-in-anki/issues)
+3. Search existing [GitHub issues](https://github.com/mootah/find-in-anki/issues)
 4. Create a new issue with detailed reproduction steps
 
 ## Privacy

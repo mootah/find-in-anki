@@ -85,7 +85,9 @@
       error = "";
       // Save settings through background script
       // include cached modelFields so they persist across reloads
-      const userSettings = { settings, profiles, modelFields };
+      const userSettings = JSON.parse(
+        JSON.stringify({ settings, profiles, modelFields })
+      );
       console.log("Sending settings to background:", userSettings);
 
       const result = await browser.runtime.sendMessage({
@@ -552,13 +554,14 @@
   }
 
   .form-input {
-    width: calc(100% - 24px);
+    width: 100%;
     padding: 8px 12px;
     border: 1px solid var(--color-border);
     border-radius: 4px;
     background: var(--color-input-bg);
     color: var(--color-text);
     font-size: 14px;
+    box-sizing: border-box;
   }
 
   .form-input:focus {
