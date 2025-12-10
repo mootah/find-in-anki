@@ -32,3 +32,8 @@ jobs:
 
       - name: Zip for Firefox
         run: bun run zip:firefox
+
+      - name: Create Release
+        run: gh release create $GITHUB_REF_NAME --generate-notes .output/find-in-anki-*-chrome.zip .output/find-in-anki-*-firefox.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
