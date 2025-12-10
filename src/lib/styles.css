@@ -1,0 +1,145 @@
+:root {
+  font-family: sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+
+  /* Light theme colors */
+  --color-text-light: #000000;
+  --color-bg-light: #f9f9f9;
+  --color-border-light: #e0e0e0;
+  --color-button-bg-light: #ffffff;
+  --color-button-border-light: #646cff;
+  --color-button-hover-bg-light: #f0f0f0;
+  --color-button-hover-border-light: #535bf2;
+  --color-input-bg-light: #ffffff;
+  --color-input-border-light: #ddd;
+  --color-error-bg-light: #ffe0e0;
+  --color-error-text-light: #d32f2f;
+  --color-muted-light: #666;
+  --color-muted-secondary-light: #999;
+  --color-focus-shadow-light: rgba(76, 175, 80, 0.1);
+
+  /* Dark theme colors */
+  --color-text-dark: #e0e0e0;
+  --color-bg-dark: #2d2d2d;
+  --color-border-dark: #3a3a3a;
+  --color-button-bg-dark: #3a3a3a;
+  --color-button-border-dark: #646cff;
+  --color-button-hover-bg-dark: #333;
+  --color-button-hover-border-dark: #747bff;
+  --color-input-bg-dark: #2d2d2d;
+  --color-input-border-dark: #444;
+  --color-error-bg-dark: #3c2c2c;
+  --color-error-text-dark: #ff7b7b;
+  --color-muted-dark: #aaa;
+  --color-muted-secondary-dark: #888;
+  --color-focus-shadow-dark: rgba(76, 175, 80, 0.2);
+
+  /* Active theme colors (default to light) */
+  --color-text: var(--color-text-light);
+  --color-bg: var(--color-bg-light);
+  --color-border: var(--color-border-light);
+  --color-button-bg: var(--color-button-bg-light);
+  --color-button-border: var(--color-button-border-light);
+  --color-button-hover-bg: var(--color-button-hover-bg-light);
+  --color-button-hover-border: var(--color-button-hover-border-light);
+  --color-input-bg: var(--color-input-bg-light);
+  --color-input-border: var(--color-input-border-light);
+  --color-error-bg: var(--color-error-bg-light);
+  --color-error-text: var(--color-error-text-light);
+  --color-muted: var(--color-muted-light);
+  --color-muted-secondary: var(--color-muted-secondary-light);
+  --color-focus-shadow: var(--color-focus-shadow-light);
+
+  color: var(--color-text);
+  background-color: var(--color-bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html[data-theme="dark"] {
+  --color-text: var(--color-text-dark);
+  --color-bg: var(--color-bg-dark);
+  --color-border: var(--color-border-dark);
+  --color-button-bg: var(--color-button-bg-dark);
+  --color-button-border: var(--color-button-border-dark);
+  --color-button-hover-bg: var(--color-button-hover-bg-dark);
+  --color-button-hover-border: var(--color-button-hover-border-dark);
+  --color-input-bg: var(--color-input-bg-dark);
+  --color-input-border: var(--color-input-border-dark);
+  --color-error-bg: var(--color-error-bg-dark);
+  --color-error-text: var(--color-error-text-dark);
+  --color-muted: var(--color-muted-dark);
+  --color-muted-secondary: var(--color-muted-secondary-dark);
+  --color-focus-shadow: var(--color-focus-shadow-dark);
+}
+
+html[data-theme="light"] {
+  --color-text: var(--color-text-light);
+  --color-bg: var(--color-bg-light);
+  --color-border: var(--color-border-light);
+  --color-button-bg: var(--color-button-bg-light);
+  --color-button-border: var(--color-button-border-light);
+  --color-button-hover-bg: var(--color-button-hover-bg-light);
+  --color-button-hover-border: var(--color-button-hover-border-light);
+  --color-input-bg: var(--color-input-bg-light);
+  --color-input-border: var(--color-input-border-light);
+  --color-error-bg: var(--color-error-bg-light);
+  --color-error-text: var(--color-error-text-light);
+  --color-muted: var(--color-muted-light);
+  --color-muted-secondary: var(--color-muted-secondary-light);
+  --color-focus-shadow: var(--color-focus-shadow-light);
+}
+
+#app {
+  width: 100%;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-button-bg);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  background-color: var(--color-button-hover-bg);
+  border-color: var(--color-button-hover-border);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}

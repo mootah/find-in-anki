@@ -32,8 +32,6 @@
   let success = $state("");
   let loadingDecks = $state(false);
 
-  let extensionShortcutsURL = $state("chrome://extensions/shortcuts");
-
   /**
    * Apply theme to the HTML element based on settings
    */
@@ -469,27 +467,9 @@
     <!-- Keyboard Shortcuts -->
     <section class="settings-section">
       <h2>Keyboard Shortcuts</h2>
-      <div class="form-group">
-        <label for="keyboard-shortcut">Find selected text in Anki</label>
-        <input
-          id="keyboard-shortcut"
-          type="text"
-          disabled={true}
-          bind:value={settings.keyboardShortcut}
-          placeholder="e.g., Alt+A"
-          class="form-input"
-          title="Keyboard shortcut to trigger quick search (e.g. Ctrl+Shift+A, Alt+S)"
-        />
-        <small
-          style="color: var(--color-muted); font-size: 12px; margin-top: 4px; display: block;"
-        >
-          This field is for documentation only.
-          <br />
-          To actually change the keyboard shortcut, visit
-          <a href={extensionShortcutsURL} target="_blank"
-            >your browser's extension manager</a
-          > and modify the shortcut for "Search in Anki".
-        </small>
+      <div>
+        To change the keyboard shortcuts, visit your browser's extension manager
+        and modify them.
       </div>
     </section>
 
@@ -506,6 +486,7 @@
   main {
     padding: 20px;
     min-height: 100vh;
+    font-size: 1rem;
   }
 
   .container {

@@ -107,7 +107,7 @@ html[data-theme="light"] {
 
 :global(body) {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: sans-serif;
   background: var(--color-bg);
   color: var(--color-text);
 }

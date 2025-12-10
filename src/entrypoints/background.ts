@@ -11,6 +11,8 @@ import type { Profile, Settings } from "../types/settings";
 const hasContextMenus = typeof browser !== "undefined" && browser.contextMenus;
 const hasStorage = typeof browser !== "undefined" && browser.storage;
 
+const isFirefox = import.meta.env.FIREFOX;
+
 export default defineBackground(() => {
   console.log("Background script initialized", { id: browser.runtime.id });
 
@@ -62,20 +64,16 @@ async function initializeContextMenu() {
     // Handle context menu click
     browser.contextMenus.onClicked.addListener(async (info, tab) => {
       if (info.menuItemId === "find-in-anki" && info.selectionText) {
-        // Store search text for popup to retrieve
-        if (hasStorage && browser.storage.session) {
-          browser.storage.session.set({
-            lastSearchText: info.selectionText,
-            lastSearchTime: Date.now(),
-          });
-        }
-
-        // Open popup with search text
+        // Open popup or sidepanel with search text
         try {
-          await browser.action.openPopup();
+          if (isFirefox) {
+            await (browser as any).sidebarAction.open();
+          } else {
+            await browser.action.openPopup();
+          }
         } catch (error) {
-          // Popup may already be open or browser may handle it differently
-          console.debug("Popup open request completed with note:", error);
+          // Popup/sidepanel may already be open or browser may handle it differently
+          console.debug("open from menu:", error);
         }
       }
     });
@@ -247,14 +245,14 @@ async function initializeKeyboardShortcuts() {
   try {
     if (hasStorage && browser.commands) {
       browser.commands.onCommand.addListener(async (command) => {
-        if (command === "find-in-anki") {
-          // Open popup (selected text is continuously monitored by content script)
-          try {
+        console.log("command", command);
+        try {
+          if (command === "open-popup") {
             await browser.action.openPopup();
-          } catch (error) {
-            // Popup may already be open or browser may handle it differently
-            console.debug("Popup open request completed with note:", error);
           }
+        } catch (error) {
+          // Popup/sidepanel may already be open or browser may handle it differently
+          console.debug("open from shortcut:", error);
         }
       });
     } else {
