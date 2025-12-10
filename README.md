@@ -1,6 +1,14 @@
 <p align="center">
-    <img src="https://raw.githubusercontent.com/mootah/find-in-anki/main/public/icon.svg" width="75" height="75" alt="find-in-anki-icon" />
+    <img src="https://raw.githubusercontent.com/mootah/find-in-anki/main/public/icon.svg" width="75" height="75" alt="logo" />
 </p>
+
+<div align="center">
+
+[![Github Workflow Status](https://img.shields.io/github/actions/workflow/status/mootah/find-in-anki/release.yml?style=flat-square)](https://github.com/mootah/find-in-anki/actions/workflows/release.yml)
+[![GitHub Release](https://img.shields.io/github/v/release/mootah/find-in-anki?style=flat-square)](https://github.com/mootah/find-in-anki/releases)
+[![GitHub License](https://img.shields.io/github/license/mootah/find-in-anki?style=flat-square)](https://github.com/mootah/find-in-anki?tab=MIT-1-ov-file)
+
+</div>
 
 # Find in Anki
 
@@ -96,7 +104,6 @@ bun run zip:firefox  # Firefox
 - `src/entrypoints/`: Main extension entry points (background, content, popup, options)
 - `src/services/`: AnkiConnect integration service
 - `src/types/`: TypeScript type definitions
-- `src/lib/`: TypeScript type definitions
 - `src/lib/`: Reusable Svelte components
 - `src/assets/`: Static assets (logos, images)
 - `public/`: Static assets (icons, manifest shared data)
