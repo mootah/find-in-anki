@@ -44,3 +44,14 @@ export interface SearchResult {
   cards: CardInfo[];
   query: string;
 }
+
+export interface CardResult {
+  cardId: number;
+  noteId: number;
+  deckName: string;
+  noteType: string;
+  fieldName: string;
+  fieldContent: string;
+  highlightedContent: Array<{ text: string; highlighted: boolean }>;
+  matchedRuleIndex: number;
+}

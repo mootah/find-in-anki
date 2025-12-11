@@ -4,8 +4,20 @@ import type {
   CardInfo,
   DeckInfo,
   ModelInfo,
+  CardResult,
 } from "../types/anki";
 import type { SearchRule } from "../types/settings";
+
+/**
+ * Clean field content by removing HTML tags and Cloze deletions
+ */
+function cleanFieldContent(content: string): string {
+  // Remove HTML tags
+  content = content.replace(/<[^>]*>/g, "");
+  // Remove Anki Cloze deletions: {{c1::text}} -> text
+  content = content.replace(/\{\{c\d+::([^}]+)(?:::.*?)?\}\}/g, "$1");
+  return content;
+}
 
 export class AnkiConnectService {
   private endpoint: string;
@@ -142,6 +154,36 @@ export class AnkiConnectService {
   }
 
   /**
+   * Split content and highlight search text
+   */
+  private splitAndHighlight(
+    content: string,
+    search: string
+  ): Array<{ text: string; highlighted: boolean }> {
+    const parts: Array<{ text: string; highlighted: boolean }> = [];
+    let lastIndex = 0;
+    const matches = [
+      ...content.matchAll(
+        new RegExp(search.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&"), "gi")
+      ),
+    ];
+    for (const match of matches) {
+      if (match.index > lastIndex) {
+        parts.push({
+          text: content.slice(lastIndex, match.index),
+          highlighted: false,
+        });
+      }
+      parts.push({ text: match[0], highlighted: true });
+      lastIndex = match.index + match[0].length;
+    }
+    if (lastIndex < content.length) {
+      parts.push({ text: content.slice(lastIndex), highlighted: false });
+    }
+    return parts;
+  }
+
+  /**
    * Build search query from rules (supports multiple rules combined with OR logic)
    */
   buildSearchQuery(searchText: string, rules: SearchRule[]): string {
@@ -170,30 +212,9 @@ export class AnkiConnectService {
   async searchCards(
     searchText: string,
     rules: SearchRule[]
-  ): Promise<
-    Array<{
-      cardId: number;
-      noteId: number;
-      deckName: string;
-      noteType: string;
-      fieldContent: string;
-      highlightedContent: string;
-      matchedRuleIndex: number;
-    }>
-  > {
+  ): Promise<Array<CardResult>> {
     try {
-      const allResults = new Map<
-        number,
-        {
-          cardId: number;
-          noteId: number;
-          deckName: string;
-          noteType: string;
-          fieldContent: string;
-          highlightedContent: string;
-          matchedRuleIndex: number;
-        }
-      >();
+      const allResults = new Map<number, CardResult>();
 
       // Execute search for each rule
       for (let ruleIndex = 0; ruleIndex < rules.length; ruleIndex++) {
@@ -258,23 +279,20 @@ export class AnkiConnectService {
             fieldContent = "";
           }
 
-          const regex = new RegExp(
-            `(${searchText.replace(/[.*+?^${}()|[\\]\\]/g, "\\$&")})`,
-            "gi"
-          );
-          const highlightedContent = fieldContent.replace(
-            regex,
-            "<mark>$1</mark>"
-          );
+          fieldContent = cleanFieldContent(fieldContent);
 
-          const deckDisplayName = card.deckName.replaceAll("::", " ・ ");
+          const deckDisplayName = card.deckName.replaceAll("::", " / ");
           allResults.set(card.cardId, {
             cardId: card.cardId,
             noteId: card.noteId,
             deckName: deckDisplayName,
             noteType: card.noteType,
+            fieldName: targetFieldName,
             fieldContent,
-            highlightedContent,
+            highlightedContent: this.splitAndHighlight(
+              fieldContent,
+              searchText
+            ),
             matchedRuleIndex: ruleIndex,
           });
         }

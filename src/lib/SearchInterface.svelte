@@ -1,15 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy } from "svelte";
   import Icon from "@iconify/svelte";
-
-  interface CardResult {
-    cardId: number;
-    noteId: number;
-    deckName: string;
-    noteType: string;
-    fieldContent: string;
-    highlightedContent: string;
-  }
+  import type { CardResult } from "../types/anki";
 
   interface SearchInterfaceProps {
     onOpenCard: (cardId: number) => void;
@@ -183,7 +175,7 @@
         title="Open Side Panel"
         aria-label="Open Side Panel"
       >
-        <Icon icon="material-symbols:side-navigation" />
+        <Icon icon="material-symbols:side-navigation" hFlip={true} />
       </button>
     {/if}
     {#if onOpenSettings}
@@ -216,16 +208,23 @@
       {#each results as result (result.cardId)}
         <button class="result-item" onclick={() => openCard(result.cardId)}>
           <div class="result-content">
-            {@html result.highlightedContent}
+            {#each result.highlightedContent as content}
+              <span class:highlighted={content.highlighted}>{content.text}</span
+              >
+            {/each}
           </div>
           <div class="result-footer">
             <div class="result-footer-item">
-              <Icon icon="mdi:folder" />
+              <Icon icon="ion:file-tray-outline" />
               {result.deckName}
             </div>
             <div class="result-footer-item">
-              <Icon icon="mdi:card-text" />
+              <Icon icon="mdi:note-outline" />
               {result.noteType}
+            </div>
+            <div class="result-footer-item">
+              <Icon icon="mdi:text" />
+              {result.fieldName}
             </div>
           </div>
         </button>
@@ -242,10 +241,11 @@
     color-scheme: light dark;
   }
 
-  :global(mark) {
+  .highlighted {
     background-color: #fff34c;
     padding: 0 2px;
     border-radius: 2px;
+    color: black;
   }
 
   .search-main {
@@ -388,6 +388,7 @@
     gap: 8px;
     margin-top: 8px;
     font-size: 12px;
+    font-weight: normal;
   }
 
   .result-footer-item {
@@ -395,7 +396,6 @@
     align-items: center;
     gap: 4px;
     color: var(--color-muted);
-    font-weight: 600;
   }
 
   .result-content {
