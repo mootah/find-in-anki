@@ -2,7 +2,7 @@
   "name": "find-in-anki",
   "description": "An extension for finding Anki cards.",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "scripts": {
     "dev": "wxt",
