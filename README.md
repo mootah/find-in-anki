@@ -32,13 +32,13 @@ A browser extension that allows you to search for selected text within your Anki
 
 ### Browser Extension
 
-- **Chrome**: Install from [Chrome Web Store](https://chrome.google.com/webstore) (link to be added)
-- **Firefox**: Install from [Firefox Add-ons](https://addons.mozilla.org) (link to be added)
+- **Chrome**: Install from [Chrome Web Store](https://chrome.google.com/webstore) (Awaiting Review)
+- **Firefox**: Install from [Firefox Add-ons](https://addons.mozilla.org) (Awaiting Review)
 
 ## Usage
 
 1. **Select Text**: Highlight any text on a webpage
-2. **Search**: Press `Alt+S` (or right-click and select "Find in Anki") to search for the selected text in your Anki cards
+2. **Search**: Press `Alt+F` (or right-click and select "Find in Anki") to search for the selected text in your Anki cards
 3. **View Results**: The extension popup will show matching cards with deck names and note types
 4. **Open Card**: Click on any result to open it directly in the Anki browser
 
@@ -63,7 +63,7 @@ Access extension options:
 #### Keyboard Shortcuts
 
 - Customize the keyboard shortcut in your browser's extension settings
-- Default: `Alt+S`
+- Default: `Alt+F`
 
 ## Development
 
