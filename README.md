@@ -8,7 +8,7 @@
 [![GitHub Release](https://img.shields.io/github/v/release/mootah/find-in-anki?style=flat-square)](https://github.com/mootah/find-in-anki/releases)
 [![GitHub License](https://img.shields.io/github/license/mootah/find-in-anki?style=flat-square)](https://github.com/mootah/find-in-anki?tab=MIT-1-ov-file)
 
-[![Get Firefox Addon](https://img.shields.io/amo/v/%7Bfa7fa832-105b-52ea-8160-cfc319b78e44%7D?style=flat-square&logo=Firefox&label=Get%20Firefox%20addon)](https://addons.mozilla.org/en-US/firefox/addon/find-in-anki/)
+[![Get Firefox Addon](https://img.shields.io/amo/v/%7Bfa7fa832-105b-52ea-8160-cfc319b78e44%7D?style=flat-square&logo=Firefox&label=Get%20Firefox%20Addon)](https://addons.mozilla.org/en-US/firefox/addon/find-in-anki/)
 
 </div>
 
