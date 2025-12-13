@@ -134,6 +134,15 @@
     }
   }
 
+  async function handleInputChange() {
+    const response = await browser.runtime.sendMessage({
+      type: "updateSelection",
+      selectedText: searchText,
+      profileId: activeProfileId,
+    });
+    console.debug("Input value changed:", response);
+  }
+
   function openSettings() {
     if (onOpenSettings) {
       onOpenSettings();
@@ -154,6 +163,7 @@
       bind:value={searchText}
       bind:this={searchInput}
       onkeydown={handleKeydown}
+      onchange={handleInputChange}
       placeholder="Search cards..."
       class="search-input"
       disabled={loading}

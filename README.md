@@ -8,6 +8,8 @@
 [![GitHub Release](https://img.shields.io/github/v/release/mootah/find-in-anki?style=flat-square)](https://github.com/mootah/find-in-anki/releases)
 [![GitHub License](https://img.shields.io/github/license/mootah/find-in-anki?style=flat-square)](https://github.com/mootah/find-in-anki?tab=MIT-1-ov-file)
 
+[![Get Firefox Addon](https://img.shields.io/amo/v/%7Bfa7fa832-105b-52ea-8160-cfc319b78e44%7D?style=flat-square&logo=Firefox&label=Get%20Firefox%20addon)](https://addons.mozilla.org/en-US/firefox/addon/find-in-anki/)
+
 </div>
 
 # Find in Anki
@@ -33,7 +35,7 @@ A browser extension that allows you to search for selected text within your Anki
 ### Browser Extension
 
 - **Chrome**: Install from [Chrome Web Store](https://chrome.google.com/webstore) (Awaiting Review)
-- **Firefox**: Install from [Firefox Add-ons](https://addons.mozilla.org) (Awaiting Review)
+- **Firefox**: Install from [Firefox Add-ons](https://addons.mozilla.org/en-US/firefox/addon/find-in-anki/)
 
 ## Usage
 
