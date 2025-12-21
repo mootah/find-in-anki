@@ -14,10 +14,10 @@ export default defineConfig({
         open_in_tab: true,
       },
     };
-    let permissions = ["storage", "tabs", "contextMenus"];
+    let permissions = ["storage", "contextMenus"];
 
     if (browser === "chrome") {
-      permissions = [...permissions, "activeTab", "sidePanel"];
+      permissions = [...permissions, "sidePanel"];
       manifest = {
         ...manifest,
         commands: {
