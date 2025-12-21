@@ -1,6 +1,6 @@
 {
   "name": "find-in-anki",
-  "description": "An extension for finding Anki cards.",
+  "description": "Search Anki cards directly from your browser. Select text and instantly find matching cards in your collection.",
   "private": true,
   "version": "0.1.1",
   "type": "module",
